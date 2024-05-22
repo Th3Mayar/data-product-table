@@ -16,6 +16,7 @@ form.addEventListener("click", async (e) => {
   // Fetch data from API
   const response = await fetch(apiProduct);
 
+  // Validate if data already exists
   if (count > 1) {
     sweetalert2.fire({
       title: "Data already exists!",
