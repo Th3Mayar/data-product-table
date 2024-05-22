@@ -2,23 +2,28 @@ import sweetalert2 from "https://cdn.jsdelivr.net/npm/sweetalert2@11.11.0/+esm";
 
 // Initialize and add the map (Script for actions program)
 const dataInsert = document.querySelector("#output-data");
-// const rowView = document.querySelector(".dataInsert");
 const form = document.querySelector(".content-button");
-// const modal = document.querySelector(".modal");
-// const modalContent = document.querySelector(".modal-content");
 const modalClose = document.querySelector(".modal-close");
-// const modalFooter = document.querySelector(".modal-footer");
 const btnDelete = document.querySelector(".btn-danger");
-const actions = document.querySelector(".actions");
-
 const apiProduct = "https://dummyjson.com/products"; // API assigment for fetch data
+
+let count = 0;
 
 // Event listener for insert data
 form.addEventListener("click", async (e) => {
   e.preventDefault();
-
+  count++;
   // Fetch data from API
   const response = await fetch(apiProduct);
+
+  if (count > 1) {
+    sweetalert2.fire({
+      title: "Data already exists!",
+      icon: "warning",
+      confirmButtonText: "Close",
+    });
+    return;
+  }
 
   try {
     // console.log(!response);
@@ -41,6 +46,7 @@ form.addEventListener("click", async (e) => {
         newRow.className = `row-${index} row-data`;
 
         const idCell = document.createElement("td");
+
         idCell.textContent = product.id;
         newRow.appendChild(idCell);
 
@@ -87,17 +93,12 @@ form.addEventListener("click", async (e) => {
         actionCell.appendChild(actionDeleteButton);
         // actionCell.appendChild(actionEditButton);
         newRow.appendChild(actionCell);
-
         dataInsert.appendChild(newRow);
 
         const rowData = document.querySelectorAll(`.row-${index}`); // Add class to row c/u row
-
         const row = rowData[0];
         const rowClass = row.classList[0];
-
         const rowElement = document.querySelector(`.${rowClass}`);
-
-        // console.log(rowElement);
 
         // Event listener for select cell row
         rowElement.addEventListener("click", () => {
@@ -105,7 +106,6 @@ form.addEventListener("click", async (e) => {
           const modalTitle = document.querySelector(".modal-title"); // Get modal title
           const modalBody = document.querySelector(".modal-body"); // Get modal body
           const row = document.querySelector(`.${rowClass}`); // Get row element
-          // rowElement.classList.toggle("active");
 
           // Add class active for modal view
           modal.classList.add("active");
