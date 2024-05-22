@@ -85,7 +85,7 @@ form.addEventListener("click", async (e) => {
         actionEditButton.className = "btn btn-warning";
 
         actionCell.appendChild(actionDeleteButton);
-        actionCell.appendChild(actionEditButton);
+        // actionCell.appendChild(actionEditButton);
         newRow.appendChild(actionCell);
 
         dataInsert.appendChild(newRow);
