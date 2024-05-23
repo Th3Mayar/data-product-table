@@ -5,7 +5,7 @@ const dataInsert = document.querySelector("#output-data");
 const form = document.querySelector(".content-button");
 const modalClose = document.querySelector(".modal-close");
 const btnDelete = document.querySelector(".btn-danger");
-const apiProduct = "https://dummyjson.com/products"; // API assigment for fetch data
+const apiProduct = "https://dummyjson.com/"; // API assigment for fetch data
 
 let count = 0;
 
