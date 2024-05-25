@@ -1,4 +1,4 @@
-import sweetalert2 from "https://cdn.jsdelivr.net/npm/sweetalert2@11.11.0/+esm";
+import sweetalert2 from "https://cdn.jsdelivr.net/npm/sweetalert2@11.11.0/+esm"; // Import SweetAlert2 library
 
 // Initialize and add the map (Script for actions program)
 const dataInsert = document.querySelector("#output-data");
